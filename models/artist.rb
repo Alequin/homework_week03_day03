@@ -17,7 +17,7 @@ class Artist
 
   def update()
     sql = "
-    UPDATE pizza_orders SET (
+    UPDATE artists SET (
       name
     ) = (
       '#{@name}'
