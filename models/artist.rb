@@ -3,7 +3,6 @@ require('pry')
 require_relative('album')
 require_relative('../db/sql_runner')
 
-
 class Artist
 
   attr_accessor :name
@@ -13,7 +12,6 @@ class Artist
     @name = options['name']
     @id = options['id'].to_i if options['id']
   end
-
 
   def update()
     sql = "
@@ -26,7 +24,6 @@ class Artist
     result = SqlRunner.run(sql)
     return result
   end
-
 
   def save()
     sql = "INSERT INTO artists (name) VALUES ('#{@name}') RETURNING id"
@@ -46,16 +43,9 @@ class Artist
     return artists.map { |artist| Artist.new(artist) }
   end
 
-
-
   def Artist.delete_all()
     sql = "DELETE FROM artists"
     SqlRunner.run(sql)
   end
 
-
-
-
-
-
-  end
+end
