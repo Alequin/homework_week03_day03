@@ -17,7 +17,7 @@ artist_1.save()
 artist_2.save()
 
 artist_1.name = "Sandra"
-artist_1.update() 
+artist_1.update()
 
 album_1 = Album.new({
   "name" => "Drive",
@@ -42,7 +42,9 @@ album_1.save()
 album_2.save()
 album_3.save()
 
-
+album_1.name = "Walk"
+album_1.year = 1910
+album_1.update()
 
 binding.pry
 nil

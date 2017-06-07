@@ -17,7 +17,7 @@ class Album
 
   def update()
     sql = "
-    UPDATE pizza_orders SET (
+    UPDATE albums SET (
       name,
       artist_id,
       year,
@@ -27,6 +27,7 @@ class Album
       #{@artist_id},
       #{@year},
       '#{@genre}'
+    )
     WHERE id = #{@id}"
     result = SqlRunner.run(sql)
     return result
