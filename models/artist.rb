@@ -30,6 +30,11 @@ class Artist
     @id = SqlRunner.run(sql)[0]["id"]
   end
 
+  def delete()
+    sql_delete_artist = "DELETE FROM artists WHERE id = #{@id}"
+    SqlRunner.run(sql_delete_artist)
+  end
+
   def albums()
     sql = "SELECT * FROM albums WHERE artist_id = #{@id}"
     result = SqlRunner.run(sql)
