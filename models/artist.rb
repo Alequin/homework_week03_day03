@@ -48,4 +48,10 @@ class Artist
     SqlRunner.run(sql)
   end
 
+  def Artist.find(id)
+    sql_command = "SELECT * FROM artists WHERE id = #{id}"
+    artist_details = SqlRunner.run(sql_command)[0]
+    return Album.new(artist_details)
+  end
+
 end
