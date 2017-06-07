@@ -6,8 +6,8 @@ require_relative('../db/sql_runner')
 
 class Artist
 
-
-  attr_reader :name, :id
+  attr_accessor :name
+  attr_reader :id
 
   def initialize(options)
     @name = options['name']
@@ -21,6 +21,7 @@ class Artist
       name
     ) = (
       '#{@name}'
+    )
     WHERE id = #{@id}"
     result = SqlRunner.run(sql)
     return result
@@ -58,4 +59,3 @@ class Artist
 
 
   end
-

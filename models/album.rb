@@ -10,11 +10,10 @@ class Album
   def initialize(options)
     @id = options["id"].to_i if options["id"]
     @name =  options["name"]
-    @year = options["year"].to_i 
+    @year = options["year"].to_i
     @genre = options["genre"]
     @artist_id =  options["artist_id"]
   end
-
 
   def update()
     sql = "
@@ -33,15 +32,12 @@ class Album
     return result
   end
 
-
   def save()
-    sql = "INSERT INTO albums (name, year, artist_id, genre) 
+    sql = "INSERT INTO albums (name, year, artist_id, genre)
       VALUES ('#{@name}', #{@year}, #{@artist_id}, '#{@genre}')
       RETURNING id;"
     @id = SqlRunner.run(sql)[0]["id"]
   end
-
-
 
   def artist()
     sql = "SELECT * FROM artists WHERE id = #{@artist_id}"
@@ -50,9 +46,7 @@ class Album
     artist = Artist.new(artist_data)
 
     return artist
-  end 
-
-
+  end
 
   def Album.all()
     sql = "SELECT * FROM albums"
@@ -60,20 +54,9 @@ class Album
     return result.map {|album| Album.new(album)}
   end
 
-
-
   def Album.delete_all()
     sql = "DELETE FROM albums"
     SqlRunner.run(sql)
   end
-
-
-
-
-
-
-
-
-
 
 end
